@@ -1,6 +1,6 @@
 # coding: utf-8
-## @package FaBoBLE_BLE113
-#  This is a library for the FaBo BLE113 Brick.
+## @package BLE113
+#  This is a FaBoBLE_BLE113 library for the FaBo BLE113 Brick.
 #
 #  http://fabo.io/301.html
 #
