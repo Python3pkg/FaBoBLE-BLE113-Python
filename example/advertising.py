@@ -34,7 +34,7 @@ ble = FaBoBLE_BLE113.BLE113(port, rate)
 ble.setDebug()
 
 if ble.setAdvParameters():
-    print "Success:setAdvParams()"
+    print("Success:setAdvParams()")
     uuid  = [0xcb,0x86,0xbc,0x31,0x05,0xbd,0x40,0xcc,0x90,0x3d,0x1c,0x9b,0xd1,0x3d,0x96,0x6b]
     major = [0x00,0x71]
     minor = [0x00,0x71]
@@ -45,17 +45,17 @@ if ble.setAdvParameters():
 
     # Beacon設定
     if ble.sendBeacon():
-        print "Success:sendBeacon()"
+        print("Success:sendBeacon()")
     else:
-        print "Failed:sendBeacon()"
+        print("Failed:sendBeacon()")
 else:
-    print "Failed:setAdvParams()"
+    print("Failed:setAdvParams()")
 
 # アドバタイズ開始
 if ble.setMode():
-    print "Success:Start Beacon advertising"
+    print("Success:Start Beacon advertising")
 else:
-    print "Failed:Start Beacon advertising"
+    print("Failed:Start Beacon advertising")
 
 while True:
     # ボタンの押下状況を取得
@@ -69,14 +69,14 @@ while True:
             if ble.isAdvertising()==False:
                 # アドバタイズ開始
                 if ble.setMode():
-                    print "Success:Start Beacon advertising"
+                    print("Success:Start Beacon advertising")
                 else:
-                    print "Failed:Start Beacon advertising"
+                    print("Failed:Start Beacon advertising")
             else:
                 # アドバタイズ終了
                 if ble.stopAdv():
-                    print "Success:Stop Beacon advertising"
+                    print("Success:Stop Beacon advertising")
                 else:
-                    print "Failed:Stop Beacon advertising"
+                    print("Failed:Stop Beacon advertising")
     else:
         isFirst = False

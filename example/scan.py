@@ -15,7 +15,7 @@ import FaBoBLE_BLE113
 port = '/dev/ttyAMA0'
 rate = 9600
 
-print "Start!"
+print("Start!")
 ble = FaBoBLE_BLE113.BLE113(port, rate)
 
 ble.setDebug()
@@ -30,16 +30,16 @@ param = [
 ]
 
 if ble.setScanParams(param):
-    print "param set OK!"
+    print("param set OK!")
 else:
-    print "param set NG!"
+    print("param set NG!")
 
-print "sd_ble_gap_scan_start()"
+print("sd_ble_gap_scan_start()")
 
 if ble.scan():
-    print "Scan OK!"
+    print("Scan OK!")
 else:
-    print "Scan NG!"
+    print("Scan NG!")
 
 while True:
     # BLE内部処理のためloop内で呼び出してください
@@ -47,14 +47,14 @@ while True:
 
     buff =  ble.getScanData()
     if buff["rssi"]!=0:
-        print "RSSI:"       ,buff["rssi"],
-        print "PacketType:" ,'%02x' % buff["packettype"],
-        print "Sender:",
+        print("RSSI:"       ,buff["rssi"], end=' ')
+        print("PacketType:" ,'%02x' % buff["packettype"], end=' ')
+        print("Sender:", end=' ')
         for i in range(5, -1, -1):
-            print '%02x' % buff["sender"][i],
-        print "AddrType:"   ,'%02x' % buff["addrtype"],
-        print "Bond:"       ,'%02x' % buff["bond"],
-        print "Data:",
+            print('%02x' % buff["sender"][i], end=' ')
+        print("AddrType:"   ,'%02x' % buff["addrtype"], end=' ')
+        print("Bond:"       ,'%02x' % buff["bond"], end=' ')
+        print("Data:", end=' ')
         for i in range(buff["data_len"]):
-            print '%02x' % buff["data"][i],
-        print
+            print('%02x' % buff["data"][i], end=' ')
+        print()

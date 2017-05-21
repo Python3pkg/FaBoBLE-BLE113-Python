@@ -18,7 +18,7 @@ if __name__ == '__main__':
     port = '/dev/ttyAMA0'
     rate = 9600
 
-    print "Start!"
+    print("Start!")
     ble = FaBoBLE_BLE113.BLE113(port, rate)
 
     ble.setDebug()
@@ -33,16 +33,16 @@ if __name__ == '__main__':
     ]
 
     if ble.setScanParams(param):
-        print "param set OK!"
+        print("param set OK!")
     else:
-        print "param set NG!"
+        print("param set NG!")
 
-    print "sd_ble_gap_scan_start()"
+    print("sd_ble_gap_scan_start()")
 
     if ble.scan():
-        print "Scan OK!"
+        print("Scan OK!")
     else:
-        print "Scan NG!"
+        print("Scan NG!")
 
     while True:
         # BLE内部処理のためloop内で呼び出してください
@@ -51,17 +51,17 @@ if __name__ == '__main__':
         # レコードが存在する場合出力
         buff = ble.getScanData()
         if buff["rssi"]!=0 and buff["packettype"] == 2:
-            print "RSSI:",buff["rssi"],
-            print " UUID:",
+            print("RSSI:",buff["rssi"], end=' ')
+            print(" UUID:", end=' ')
             for i in range(10,26):
-                print '%02x' % buff["data"][i],
-            print " MAJOR:",buff["data"][26]<<8 | buff["data"][27],
+                print('%02x' % buff["data"][i], end=' ')
+            print(" MAJOR:",buff["data"][26]<<8 | buff["data"][27], end=' ')
 #            for i in range(26,28):
 #                print '%02x' % buff["data"][i],
-            print " MINOR:",
-            print " MAJOR:",buff["data"][28]<<8 | buff["data"][29],
+            print(" MINOR:", end=' ')
+            print(" MAJOR:",buff["data"][28]<<8 | buff["data"][29], end=' ')
 #            for i in range(26,28):
 #            for i in range(28,30):
 #                print '%02x' % buff["data"][i],
-            print
+            print()
 #        time.sleep(0.1);

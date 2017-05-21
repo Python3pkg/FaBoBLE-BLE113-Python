@@ -27,7 +27,7 @@ ble = FaBoBLE_BLE113.BLE113(port, rate)
 ble.setDebug()
 
 if ble.setAdvParameters():
-    print "Success:setAdvParams()"
+    print("Success:setAdvParams()")
     uuid  = [0x00,0x11,0x11,0x33,0x44,0x55,0x66,0x77,0x88,0x99,0xaa,0xbb,0xcc,0xdd,0xee,0xff]
     major = [0x01,0x02]
     minor = [0x00,0x00]
@@ -37,16 +37,16 @@ if ble.setAdvParameters():
     ble.setBeaconMinor(minor)
 
     if ble.sendBeacon():
-        print "Success:sendBeacon()"
+        print("Success:sendBeacon()")
     else:
-        print "Failed:sendBeacon()"
+        print("Failed:sendBeacon()")
 else:
-    print "Failed:setAdvParams()"
+    print("Failed:setAdvParams()")
 
 if ble.setMode():
-    print "Success:Start Beacon Advertising"
+    print("Success:Start Beacon Advertising")
 else:
-    print "Failde:Start Beacon Advertising"
+    print("Failde:Start Beacon Advertising")
 
 # Set SPI
 spi = spidev.SpiDev()
@@ -67,12 +67,12 @@ while True:
             data = readadc(TEMPPIN)
             volt = arduino_map(data, 0, 1023, 0, 5000)
             temp = arduino_map(volt, 300, 1600, -30, 100)
-            print("temp : {:4.1f} ".format(temp))
+            print(("temp : {:4.1f} ".format(temp)))
             time.sleep( 0.5 )
             send_temp = int(temp)
             ble.setBeaconMinor([0,send_temp])
             if ble.sendBeacon()==False:
-                print "Failed :sendBeacon()"
+                print("Failed :sendBeacon()")
             time.sleep( 5 )
 
     except KeyboardInterrupt:

@@ -403,17 +403,17 @@ class BLE113:
                 return True
             else:
                 if(self.DEBUG):
-                    print "Error Code",buffer[5].encode('hex'),buffer[4].encode('hex')
+                    print("Error Code",buffer[5].encode('hex'),buffer[4].encode('hex'))
                 return False
         else:
             if(self.DEBUG):
-                print "Unknow Error"
-                print buffer[0].encode('hex')
-                print buffer[1].encode('hex')
-                print buffer[2].encode('hex')
-                print buffer[3].encode('hex')
-                print buffer[4].encode('hex')
-                print buffer[5].encode('hex')
+                print("Unknow Error")
+                print(buffer[0].encode('hex'))
+                print(buffer[1].encode('hex'))
+                print(buffer[2].encode('hex'))
+                print(buffer[3].encode('hex'))
+                print(buffer[4].encode('hex'))
+                print(buffer[5].encode('hex'))
         return False
 
     ## Clear ScanData
